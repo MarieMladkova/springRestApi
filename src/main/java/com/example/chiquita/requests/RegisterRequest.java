@@ -1,0 +1,25 @@
+package com.example.chiquita.requests;
+
+import com.fasterxml.jackson.databind.introspect.TypeResolutionContext;
+
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+
+public record RegisterRequest(
+        @NotEmpty(message = "First is required")
+        @Size(min=2, max=50, message = "First name must be between 2 and 50 characters")
+        String firstName,
+
+        @NotEmpty
+        @Size(min=2, max=50)
+        String lastName,
+
+        @NotEmpty
+        @Email
+        String email,
+
+        @NotEmpty
+        @Size(min=2, max=50)
+        String password) {
+}
